@@ -49,7 +49,7 @@ class Client
     {
         $options = $this->createRequestOptions();
         $params['query'] = $query;
-        $options['query'] = $params;
+        $options['form_params'] = $params;
 
         $result = $this->client->request('POST', sprintf('/v3/job/issue/%s/%s', $type, $db), $options);
         $contents = json_decode($result->getBody()->getContents(), true);
