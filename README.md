@@ -37,3 +37,20 @@ while (true) {
 $result = $client->jobResult($jobId);
 ```
 
+### Query options
+
+```php
+$client->hiveQuery($dbName, $query, ['priority' => Job::PRIORITY_VERY_HIGH, 'engine_version' => 'stable']);
+```
+
+### Client Options
+
+Use the guzzle option.  
+[Docment](https://docs.guzzlephp.org/en/6.5/request-options.html).
+
+
+```php
+$options['client_config'] = ['timeout' => 1];
+
+$client = new Client('YOUR-API-KEY-HERE', $options);
+```
