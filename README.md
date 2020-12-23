@@ -46,7 +46,7 @@ $client->hiveQuery($dbName, $query, ['priority' => Job::PRIORITY_VERY_HIGH, 'eng
 ### Client Options
 
 Use the guzzle option.  
-[Docment](https://docs.guzzlephp.org/en/6.5/request-options.html).
+[Document](https://docs.guzzlephp.org/en/6.5/request-options.html).
 
 
 ```php
