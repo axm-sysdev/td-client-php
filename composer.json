@@ -1,5 +1,7 @@
 {
     "name": "axm-sysdev/td-client-php",
+    "description": "Treasure Data API library for PHP",
+    "license": "Apache-2.0",
     "require": {
         "php": ">=7.0",
         "ext-json": "*",
