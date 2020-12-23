@@ -2,6 +2,7 @@
     "name": "axm-sysdev/td-client-php",
     "require": {
         "php": ">=7.0",
+        "ext-json": "*",
         "guzzlehttp/guzzle": "^6.5"
     },
     "require-dev": {

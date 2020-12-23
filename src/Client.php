@@ -21,6 +21,9 @@ class Client
      */
     protected $endpoint = 'https://api.treasuredata.co.jp';
 
+    const QUERY_TYPE_HIVE = 'hive';
+    const QUERY_TYPE_PRESTO = 'presto';
+
     /**
      * TDClient constructor.
      *
@@ -67,7 +70,7 @@ class Client
      */
     public function hiveQuery(string $db, string $query, array $params = []): string
     {
-        return $this->query($db, 'hive', $query, $params);
+        return $this->query($db, static::QUERY_TYPE_HIVE, $query, $params);
     }
 
     /**
@@ -81,7 +84,7 @@ class Client
      */
     public function prestoQuery(string $db, string $query, array $params = []): string
     {
-        return $this->query($db, 'presto', $query, $params);
+        return $this->query($db, static::QUERY_TYPE_PRESTO, $query, $params);
     }
 
     /**
@@ -106,14 +109,18 @@ class Client
      *
      * @param string $jobId
      * @param string $format
-     * @return string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException|\InvalidArgumentException
      */
-    public function jobResult(string $jobId, string $format = 'json')
+    public function jobResult(string $jobId, string $format = JobResult::FORMAT_JSON)
     {
+        $jobResult = new JobResult($format);
+
         $options = $this->createRequestOptions();
-        $result = $this->client->request('GET', sprintf('/v3/job/result/%s?format=%s', $jobId, $format), $options);
-        return $result->getBody()->getContents();
+        $options['query'] = ['format' => $format];
+        $result = $this->client->request('GET', sprintf('/v3/job/result/%s', $jobId), $options);
+
+        return $jobResult->toArray($result->getBody()->getContents());
     }
 
     /**
