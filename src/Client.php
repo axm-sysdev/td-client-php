@@ -112,7 +112,7 @@ class Client
      * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException|\InvalidArgumentException
      */
-    public function jobResult(string $jobId, string $format = JobResult::FORMAT_JSON)
+    public function jobResult(string $jobId, string $format = JobResult::FORMAT_JSON): array
     {
         $jobResult = new JobResult($format);
 
