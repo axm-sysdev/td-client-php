@@ -3,13 +3,13 @@
     "description": "Treasure Data API library for PHP",
     "license": "Apache-2.0",
     "require": {
-        "php": ">=7.0",
+        "php": ">=8.0",
         "ext-json": "*",
-        "guzzlehttp/guzzle": "^6.5"
+        "guzzlehttp/guzzle": "^7.0.0"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.5",
-        "phpunit/phpunit": "^6.5"
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4": {
